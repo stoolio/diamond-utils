@@ -1,0 +1,6 @@
+UselessAssignment:
+  Description: 'Checks for useless assignment to a local variable.'
+  Enabled: false
+Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false
