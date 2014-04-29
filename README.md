@@ -62,7 +62,9 @@ I've been jumping back and forth between using a symbol as the internal represen
 Ranges and comparison currently work, but there are a few things that I'm not happy with:
 
 * In order for ranges to work, we need <=> to compare the wrong way
-Properly, D is the best grade. So, D > E and so on. This does not work utilizing letters as an internal representation or starting numbers at 0. The right answer is probably to represent the grades as numbers backwards, so D would be 22 internally. This would save having to provide > and < methods
+
+Properly, D is the best grade. Therefore, D > E and so on. This does not work out of the box while utilizing letters as an internal representation or starting numbers at 0. The right answer is probably to represent the grades as numbers backwards, so D would be 22 internally. This would save having to provide > and < methods
 
 * You can still create new instances of the Diamond::Color::Grade object
-I've tried setting new to private, but that doesn't seem to work. I'm too tired right now to track down my oversight. Regardless, the whole thing feels off to me. I think there must be a clearer way.
+
+I've tried setting new to private, but that doesn't seem to work. I'm too tired right now to track down my oversight. Regardless, the whole thing feels off to me. There must be a clearer way.
