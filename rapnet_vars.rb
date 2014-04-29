@@ -1,51 +1,45 @@
+# Makes working with diamond information easier
 module Diamond
+  shapes = %w(
+    Round
+    Pear
+    Princess
+    Marquise
+    Oval
+    Radiant
+    Emerald
+    Heart
+    Cushion
+    Asscher
+  )
 
-  shapes = [
-    'Round',
-    'Pear',
-    'Princess',
-    'Marquise',
-    'Oval',
-    'Radiant',
-    'Emerald',
-    'Heart',
-    'Cushion',
-    'Asscher'
-  ]
+  clarity = %w(IF VVS1 VVS2 VS1 VS2 SI1 SI2 SI3)
+
+  cut = %w(Excellent Very_Good Good Fair)
+
+  polish = %w(Excellent Very_Good Good Fair)
+
+  symmetry = %w(Excellent Very_Good Good Fair)
+
+  labs = %w(GIA', 'IGI', 'AGS', 'HRD', 'EGL_USA', 'NONE')
+
+  # price_total_from/to - integer
+
+  # page_number - integer
+
+  # page_size - integer
 
   # size_from/ to - decimal - e.g. 2.10
-  class Color
-    include Comparable
 
-    VALID = [:D, :E, :F, :G, :H, :I, :J, :K, :L, :M, :N]
-    attr_reader :color
+  sort_by = %w(PRICE SHAPE SIZE COLOR CLARITY CUT LAB)
 
-    def color=(color)
-      normalized_color = color.to_s[0].upcase.to_sym
-      @color =  normalized_color if VALID.include?(normalized_color)
-    end
+  sort_direction = %w(ASC DESC)
 
-    def <=>(other)
-      -1 * (color <=> other.color)
-    end
-
-    def succ
-      Color.new(VALID[VALID.find_index(@color) - 1])
-    end
-
-    def initialize(color)
-      self.color = color
-    end
-
+  def stupid
+    a = shapes + clarity + cut
+    b = polish + symmetry + labs + sort_by + sort_direction
+    a + b
   end
-
-  clarity = ['IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2', 'SI3']
-
-  cut = ['Excellent', 'Very Good', 'Good', 'Fair']
-
-  polish = ['Excellent', 'Very Good', 'Good', 'Fair']
-
-  symmetry = ['Excellent', 'Very Good', 'Good', 'Fair']
 
   class CutGrade
     include Comparable
@@ -86,20 +80,7 @@ module Diamond
     end
 
     def <=>(other)
-      ORDER[self.abbr] <=> ORDER[other.abbr]
+      ORDER[abbr] <=> ORDER[other.abbr]
     end
   end
-
-  labs = ['GIA', 'IGI', 'AGS', 'HRD', 'EGL_USA', 'NONE']
-
-  # price_total_from/to - integer
-
-  # page_number - integer
-
-  # page_size - integer
-
-  sort_by = ['PRICE','SHAPE','SIZE','COLOR', 'CLARITY', 'CUT','LAB']
-
-  sort_direction = 'ASC','DESC'
-
 end
